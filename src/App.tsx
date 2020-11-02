@@ -1,24 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  color: blue;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background-color: orange;
+  &:hover{
+    cursor:pointer;
+    background: red;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-        whatup <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <StyledButton>holla</StyledButton>
     </div>
   );
 }
