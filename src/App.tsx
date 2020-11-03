@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
+import "./helper.scss";
+
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faList, faChartBar} from "@fortawesome/free-solid-svg-icons";
+
+import Nav from "./components/Nav";
+
 
 import {
   HashRouter as Router,
@@ -32,30 +37,13 @@ function NoMatch(){
 const height = window.innerHeight;
 
 const Wrapper = styled.div`
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
 `
 
 const Main = styled.div`
-  border: 1px solid green;
   flex-grow: 1;
   overflow: auto;
-`
-
-const Nav = styled.nav`
-  background-color: #68e2ae;
-
-  ul{
-    display: flex;
-    li{
-      width: 33.33333%;
-      text-align: center;
-      padding: 0.5rem 0;
-      font-size: 2rem;
-    }
-  }
-
 `
 
 function App() {
@@ -79,25 +67,7 @@ function App() {
             </Route>
           </Switch>
         </Main>
-        <Nav>
-          <ul>
-            <li>
-              <Link to="/overview">
-                <FontAwesomeIcon icon={faList} ></FontAwesomeIcon>
-              </Link>
-            </li>
-            <li>
-              <Link to="/money">
-              <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon>
-              </Link>
-            </li>
-            <li>
-              <Link to="/stats">
-              <FontAwesomeIcon icon={faChartBar} ></FontAwesomeIcon>
-              </Link>
-            </li>
-          </ul>
-        </Nav>
+        <Nav/>
       </Wrapper>
     </Router>
   );
