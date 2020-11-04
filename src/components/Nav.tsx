@@ -31,19 +31,19 @@ const Nav = () => {
         <NavStyle>
             <ul>
                 <li>
-                <Link to="/overview">
-                    <FontAwesomeIcon icon={faList} ></FontAwesomeIcon>
-                </Link>
+                  <Link to="/overview">
+                      <FontAwesomeIcon icon={faList} ></FontAwesomeIcon>
+                  </Link>
                 </li>
                 <li>
-                <Link to="/money">
-                <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon>
-                </Link>
+                  <Link to="/money">
+                    <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon>
+                  </Link>
                 </li>
                 <li>
-                <Link to="/stats">
-                <FontAwesomeIcon icon={faChartBar} ></FontAwesomeIcon>
-                </Link>
+                  <Link to="/stats">
+                    <FontAwesomeIcon icon={faChartBar} ></FontAwesomeIcon>
+                  </Link>
                 </li>
             </ul>
         </NavStyle>

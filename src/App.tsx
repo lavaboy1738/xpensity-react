@@ -2,30 +2,39 @@ import React from 'react';
 import styled from "styled-components";
 import "./helper.scss";
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus, faList, faChartBar} from "@fortawesome/free-solid-svg-icons";
-
 import Nav from "./components/Nav";
+import Layout from "./components/Layout";
 
 
 import {
   HashRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
 
 function Overview() {
-  return <h2>Overview</h2>;
+  return (
+    <Layout>
+      <h2>Overview</h2>
+    </Layout>
+  )
 }
 
 function Money() {
-  return <h2>Money</h2>;
+  return (
+    <Layout>
+      <h2>Money</h2>
+    </Layout>
+  )
 }
 
 function Stats() {
-  return <h2>Stats</h2>;
+  return (
+    <Layout>
+      <h2>Stats</h2>
+    </Layout>
+  )
 }
 
 function NoMatch(){
@@ -34,23 +43,9 @@ function NoMatch(){
   )
 }
 
-const height = window.innerHeight;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-const Main = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-`
-
 function App() {
   return (
     <Router>
-      <Wrapper style={{height: `${height}px`}} >
-        <Main>
           <Switch >
             <Route path="/overview">
               <Overview />
@@ -66,9 +61,6 @@ function App() {
               <NoMatch/>
             </Route>
           </Switch>
-        </Main>
-        <Nav/>
-      </Wrapper>
     </Router>
   );
 }
