@@ -5,6 +5,11 @@ import "./helper.scss";
 import Nav from "./components/Nav";
 import Layout from "./components/Layout";
 
+import Overview from "./views/Overview";
+import Money from "./views/Money";
+import Stats from "./views/Stats";
+import NoMatch from "./views/NoMatch";
+
 
 import {
   HashRouter as Router,
@@ -13,35 +18,6 @@ import {
   Redirect
 } from "react-router-dom";
 
-function Overview() {
-  return (
-    <Layout>
-      <h2>Overview</h2>
-    </Layout>
-  )
-}
-
-function Money() {
-  return (
-    <Layout>
-      <h2>Money</h2>
-    </Layout>
-  )
-}
-
-function Stats() {
-  return (
-    <Layout>
-      <h2>Stats</h2>
-    </Layout>
-  )
-}
-
-function NoMatch(){
-  return (
-    <div>404 boi</div>
-  )
-}
 
 function App() {
   return (
