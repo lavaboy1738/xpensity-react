@@ -1,9 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
 import "./helper.scss";
-
-import Nav from "./components/Nav";
-import Layout from "./components/Layout";
 
 import Overview from "./views/Overview";
 import Money from "./views/Money";
