@@ -1,15 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import {NavLink} from "react-router-dom";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faList, faChartBar} from "@fortawesome/free-solid-svg-icons";
 
-import {
-    Link
-  } from "react-router-dom";
 
 const NavStyle = styled.nav`
-  background-color: $primary-color;
   min-height: 4.2rem;
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
 
@@ -25,6 +22,12 @@ const NavStyle = styled.nav`
         padding: 0.5rem 0;
         width: 100%;
         font-size: 3rem;
+          &.selected{
+          background-color: #68e2ae;
+          .nav-icon{
+            color: #ffffff;
+          }
+        }
       }
     }
   }
@@ -35,19 +38,19 @@ const Nav = () => {
         <NavStyle>
             <ul>
                 <li>
-                  <Link to="/overview">
-                      <FontAwesomeIcon icon={faList} ></FontAwesomeIcon>
-                  </Link>
+                  <NavLink to="/overview" activeClassName="selected">
+                      <FontAwesomeIcon icon={faList} className = "nav-icon"></FontAwesomeIcon>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/money">
-                    <FontAwesomeIcon icon={faPlus} ></FontAwesomeIcon>
-                  </Link>
+                  <NavLink to="/money" activeClassName="selected">
+                    <FontAwesomeIcon icon={faPlus} className = "nav-icon"></FontAwesomeIcon>
+                  </NavLink>
                 </li>
                 <li>
-                  <Link to="/stats">
-                    <FontAwesomeIcon icon={faChartBar} ></FontAwesomeIcon>
-                  </Link>
+                  <NavLink to="/stats" activeClassName="selected">
+                    <FontAwesomeIcon icon={faChartBar} className = "nav-icon"></FontAwesomeIcon>
+                  </NavLink>
                 </li>
             </ul>
         </NavStyle>
