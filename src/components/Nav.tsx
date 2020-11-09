@@ -17,9 +17,13 @@ const NavStyle = styled.nav`
     display: flex;
     li{
       width: 33.33333%;
-      text-align: center;
-      padding: 0.5rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       a{
+        text-align: center;
+        padding: 0.5rem 0;
+        width: 100%;
         font-size: 3rem;
       }
     }
