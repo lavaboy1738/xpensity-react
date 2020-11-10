@@ -22,6 +22,7 @@ const NavStyle = styled.nav`
         padding: 0.5rem 0;
         width: 100%;
         font-size: 3rem;
+        color: #333333;
           &.selected{
           background-color: #68e2ae;
           .nav-icon{
