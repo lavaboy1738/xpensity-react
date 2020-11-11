@@ -3,7 +3,6 @@ import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus, faList, faChartBar} from "@fortawesome/free-solid-svg-icons";
 
 
 const NavStyle = styled.nav`
@@ -40,17 +39,17 @@ const Nav = () => {
             <ul>
                 <li>
                   <NavLink to="/overview" activeClassName="selected">
-                      <FontAwesomeIcon icon={faList} className = "nav-icon"></FontAwesomeIcon>
+                      <FontAwesomeIcon icon="list" className = "nav-icon"></FontAwesomeIcon>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/money" activeClassName="selected">
-                    <FontAwesomeIcon icon={faPlus} className = "nav-icon"></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="plus" className = "nav-icon"></FontAwesomeIcon>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/stats" activeClassName="selected">
-                    <FontAwesomeIcon icon={faChartBar} className = "nav-icon"></FontAwesomeIcon>
+                    <FontAwesomeIcon icon="chart-bar" className = "nav-icon"></FontAwesomeIcon>
                   </NavLink>
                 </li>
             </ul>
