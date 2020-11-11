@@ -19,7 +19,7 @@ const NavStyle = styled.nav`
       align-items: center;
       a{
         text-align: center;
-        padding: 0.5rem 0;
+        padding: 0.3rem 0;
         width: 100%;
         font-size: 3rem;
         color: #333333;
