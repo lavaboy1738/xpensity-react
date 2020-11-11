@@ -7,11 +7,14 @@ const height = window.innerHeight;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `
 
 const Main = styled.div`
   flex-grow: 1;
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
 `
 
 

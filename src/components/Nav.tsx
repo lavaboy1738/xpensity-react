@@ -7,7 +7,7 @@ import {faPlus, faList, faChartBar} from "@fortawesome/free-solid-svg-icons";
 
 
 const NavStyle = styled.nav`
-  min-height: 4.2rem;
+  min-height: 4rem;
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
 
   ul{

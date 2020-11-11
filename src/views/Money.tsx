@@ -8,7 +8,54 @@ import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-so
 
 const primaryColor = "#68e2ae";
 
+const CategorySelection = styled.section`
+  color: #333333;
+  ul{
+    display: flex;
+    min-height: 4.5rem;
+    li{
+      width: 50%;
+      font-size: 2.5rem;
+      font-weight: 200;
+      text-align: center;
+      background-color: #b4ecd5;
+      line-height: 4.5rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+
+      &::after{
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #68e2ae;
+        top: 0;
+        z-index: -1;
+        transition: 0.3s all ease;
+      }
+
+      &.category-left::after{
+        right: -100%;
+      }
+      &.category-right::after{
+        left: -100%;
+      }
+
+      &.selected{
+          &.category-left::after{
+          right: 0%;
+        }
+        &.category-right::after{
+          left: 0%;
+        }
+      }
+    }
+  }
+`
+
 const Numpad = styled.section`
+  min-height: 30rem;
   display: flex;
   flex-direction: column;
   color: #333333;
@@ -22,9 +69,9 @@ const Numpad = styled.section`
     background-color: white;
     font-weight: 400;
     box-shadow: inset 0 -5px 3px -5px rgba(0,0,0,0.25),
-    inset 0 5px 3px -5px rgba(0,0,0,0.25)
-    ;
+    inset 0 5px 3px -5px rgba(0,0,0,0.25);
   }
+
   .numbers{
     color: #333333;
     button{
@@ -82,6 +129,7 @@ const Numpad = styled.section`
 `
 
 const Comments = styled.section`
+  min-height: 3.5rem;
   input{
     color: #333333;
     border: none;
@@ -97,55 +145,16 @@ const Comments = styled.section`
 `
 
 const TagSelection = styled.section`
+  overflow-x: hidden;
   background-color: #f8fffc;
   color: #333333;
   flex-grow: 1;
-  ul{
-    display: flex;
-    min-height: 4.5rem;
-    li{
-      width: 50%;
-      font-size: 2.5rem;
-      font-weight: 200;
-      text-align: center;
-      background-color: #b4ecd5;
-      line-height: 4.5rem;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-
-      &::after{
-        content: "";
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background-color: #68e2ae;
-        top: 0;
-        z-index: -1;
-        transition: 0.3s all ease;
-      }
-
-      &.category-left::after{
-        right: -100%;
-      }
-      &.category-right::after{
-        left: -100%;
-      }
-
-      &.selected{
-          &.category-left::after{
-          right: 0%;
-        }
-        &.category-right::after{
-          left: 0%;
-        }
-      }
-    }
-  }
   ol{
     margin: -0.8rem -0.8rem;
     display: flex;
+    flex-wrap: wrap;
     padding: 1.2rem;
+    overflow-y: auto;
     li{
       margin: 0.8rem 0.8rem;
       width: 4rem;
@@ -181,12 +190,122 @@ const TagSelection = styled.section`
 const Money = () => {
     return (
       <Layout>
-        <TagSelection>
+        <CategorySelection>
           <ul>
             <li className="selected category-left">Expenditure</li>
             <li className="category-right">Income</li>
           </ul>
+        </CategorySelection>
+        <TagSelection>
           <ol>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            </li>
+            <li className = "selected-tag">
+            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            </li>
+            <li>
+            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            </li>
             <li>
               <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
             </li>
