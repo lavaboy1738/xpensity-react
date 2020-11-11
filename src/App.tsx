@@ -6,6 +6,8 @@ import Money from "./views/Money";
 import Stats from "./views/Stats";
 import NoMatch from "./views/NoMatch";
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-solid-svg-icons";
 
 import {
   HashRouter as Router,
@@ -14,6 +16,7 @@ import {
   Redirect
 } from "react-router-dom";
 
+library.add(faTaxi, faHome, faPlus, faDollarSign, faBook);
 
 function App() {
   return (

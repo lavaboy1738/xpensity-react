@@ -1,10 +1,9 @@
 import React from "react";
 import Layout from "../components/Layout";
-import styled from "styled-components";
 
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-solid-svg-icons";
+// import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-solid-svg-icons";
 
 import {CategorySelection} from "./Money/CategorySelection";
 import {TagSelection} from "./Money/TagSelection";
@@ -23,19 +22,19 @@ const Money = () => {
         <TagSelection>
           <ol>
             <li>
-              <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>
+              <FontAwesomeIcon icon="home"></FontAwesomeIcon>
             </li>
             <li>
-            <FontAwesomeIcon icon={faTaxi}></FontAwesomeIcon>
+            <FontAwesomeIcon icon="taxi"></FontAwesomeIcon>
             </li>
             <li className = "selected-tag">
-            <FontAwesomeIcon icon={faDollarSign}></FontAwesomeIcon>
+            <FontAwesomeIcon icon="dollar-sign"></FontAwesomeIcon>
             </li>
             <li>
-            <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+            <FontAwesomeIcon icon="book"></FontAwesomeIcon>
             </li>
             <button className="new-tag">
-              <FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
+              <FontAwesomeIcon icon="plus"></FontAwesomeIcon>
             </button>
           </ol>
         </TagSelection>
