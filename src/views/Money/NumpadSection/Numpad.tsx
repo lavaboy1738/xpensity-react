@@ -1,7 +1,11 @@
 import {NumpadStyle} from "./NumpadStyle";
-import React, { useState } from "react";
+import React, {useState} from "react";
 
-const Numpad = () =>{
+type Props = {
+    onChange: (total: number)=>void;
+}
+
+const Numpad:React.FunctionComponent<Props> = (props) =>{
 
     const [output, setOutput] = useState("0")
 
@@ -42,6 +46,9 @@ const Numpad = () =>{
                 setOutput("0");
                 break;
             case "OK":
+                props.onChange(parseFloat(output));
+                setOutput("0");
+                break;
         }
     }
 

@@ -4,11 +4,24 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {totalTags} from "../../../utils/icons";
 
-const TagSelection:React.FunctionComponent = () => {
+type Props = {
+    selectedTag: IconProp | undefined;
+    onChange: (selected: IconProp) => void;
+    selectedCategory: "-" | "+";
+    displayedExpenditureTags: IconProp [];
+    displayedIncomeTags: IconProp [];
+    onAddNewExpenditureTag: (newTagList: IconProp[]) => void;
+    onAddNewIncomeTag: (newTagList: IconProp[]) => void;
+}
 
-    const [displayedTags, setDisplayedTags] = useState<IconProp[]>(["home", "running", "bus", "tools", "book", "baby", "utensils", "shopping-cart", "paw", "plane"])
+const TagSelection:React.FunctionComponent<Props> = (props) => {
+
+    const displayedExpenditureTags = props.displayedExpenditureTags;
+    const displayedIncomeTags = props.displayedIncomeTags;
+
     const [isDown, setDropdownStatus] = useState(false);
-    const [selectedTag, setSelectedTag] = useState<IconProp>();
+
+    const selectedTag = props.selectedTag;
 
     const tagsMenuRef = useRef<HTMLDivElement>(null);
 
@@ -21,35 +34,57 @@ const TagSelection:React.FunctionComponent = () => {
     }
 
     const onSelectTag = (tagIcon: IconProp) => {
-        setSelectedTag((x)=> x = tagIcon);
+        props.onChange(tagIcon)
     }
 
     const onAddNewTag = (newTag: IconProp) => {
-        if(displayedTags.indexOf(newTag)>=0){
-            window.alert("Tag Already Exist")
+        if(props.selectedCategory === "-"){
+            if(displayedExpenditureTags.indexOf(newTag)>=0){
+                window.alert("Tag Already Exist")
+            }else{
+                    const copy = [...displayedExpenditureTags]
+                    copy.push(newTag)
+                    props.onAddNewExpenditureTag(copy)
+                    dropdown();
+            }
         }else{
-            setDisplayedTags(()=>{
-                const duplicate = [...displayedTags]
-                duplicate.push(newTag)
-                return duplicate
-            })
-            dropdown();
+            if(displayedIncomeTags.indexOf(newTag)>=0){
+                window.alert("Tag Already Exist")
+            }else{
+                    const copy = [...displayedIncomeTags]
+                    copy.push(newTag)
+                    props.onAddNewIncomeTag(copy)
+                    dropdown();
+            }
         }
     }
 
     return(
         <TagSelectionStyle>
             <ol>
-                {displayedTags.map(tag=>{
-                    return(
-                        <li key={tag.toString()} 
-                        onClick={()=>onSelectTag(tag)} 
-                        className={selectedTag === tag? "selected-tag" : ""}
-                        >
-                            <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
-                        </li>
-                    )
-                })}
+                {props.selectedCategory === "-"? 
+                    displayedExpenditureTags.map(tag=>{
+                        return(
+                            <li key={tag.toString()} 
+                            onClick={()=>onSelectTag(tag)} 
+                            className={selectedTag === tag? "selected-tag" : ""}
+                            >
+                                <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
+                            </li>
+                        )
+                    })
+                    :
+                    displayedIncomeTags.map(tag=>{
+                        return(
+                            <li key={tag.toString()} 
+                            onClick={()=>onSelectTag(tag)} 
+                            className={selectedTag === tag? "selected-tag" : ""}
+                            >
+                                <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
+                            </li>
+                        )
+                    })
+                }
                 <button className="new-tag" onClick={dropdown}>
                 <FontAwesomeIcon icon="plus"></FontAwesomeIcon>
                 </button>

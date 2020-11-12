@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React from "react";
 
 const CategorySelectionStyle = styled.section`
     color: #333333;
@@ -47,13 +47,22 @@ const CategorySelectionStyle = styled.section`
     }
 `
 
+type Category = "-" | "+";
 
-const CategorySelection:React.FunctionComponent = () => {
+type Props = {
+    selectedCategory: Category;
+    onChange: (category: Category) => void;
+}
 
-    const [selectedCategory, setSelectedCategory] = useState("-");
 
-    const onSelectCategory=(category: string)=>{
-        setSelectedCategory((x)=> x = category)
+const CategorySelection:React.FunctionComponent<Props> = (props) => {
+
+    // const [selectedCategory, setSelectedCategory] = useState("-");
+
+    const selectedCategory = props.selectedCategory;
+
+    const onSelectCategory=(category: Category)=>{
+        props.onChange(category)
     }
 
     return(

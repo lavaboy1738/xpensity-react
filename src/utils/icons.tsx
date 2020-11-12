@@ -20,6 +20,4 @@ const totalTags: IconProp[] = ["ellipsis-h", "hamburger", "money-check-alt", "to
 "capsules", "first-aid", "wine-glass-alt", "tshirt" , "taxi", 
 "gamepad", "film", "ticket-alt", "dog", "credit-card", "donate", "gift"]
 
-const incomeTags: IconProp[] = ["piggy-bank", "money-check-alt", "dollar-sign", "gift", "money-check"]
-
 export {initTags, totalTags}
