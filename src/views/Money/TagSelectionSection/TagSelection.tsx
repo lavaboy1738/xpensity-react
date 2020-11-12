@@ -2,10 +2,11 @@ import {TagSelectionStyle} from "./TagSelectionStyle";
 import React, {useState, useRef} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {totalTags} from "../../../utils/icons";
 
 const TagSelection:React.FunctionComponent = () => {
 
-    const [displayedTags, setDisplayedTags] = useState<IconProp[]>(["home", "taxi", "dollar-sign", "book"])
+    const [displayedTags, setDisplayedTags] = useState<IconProp[]>(["home", "running", "bus", "tools", "book", "baby", "utensils", "shopping-cart", "paw", "plane"])
     const [isDown, setDropdownStatus] = useState(false);
     const [selectedTag, setSelectedTag] = useState<IconProp>();
 
@@ -21,6 +22,19 @@ const TagSelection:React.FunctionComponent = () => {
 
     const onSelectTag = (tagIcon: IconProp) => {
         setSelectedTag((x)=> x = tagIcon);
+    }
+
+    const onAddNewTag = (newTag: IconProp) => {
+        if(displayedTags.indexOf(newTag)>=0){
+            window.alert("Tag Already Exist")
+        }else{
+            setDisplayedTags(()=>{
+                const duplicate = [...displayedTags]
+                duplicate.push(newTag)
+                return duplicate
+            })
+            dropdown();
+        }
     }
 
     return(
@@ -47,9 +61,9 @@ const TagSelection:React.FunctionComponent = () => {
                     <FontAwesomeIcon icon="chevron-left" className="invis"></FontAwesomeIcon>
                 </div>
                 <ul>
-                    {displayedTags.map(tag=>{
+                    {totalTags.map(tag=>{
                             return(
-                                <li key={tag.toString()}>
+                                <li key={tag.toString()} onClick={()=>onAddNewTag(tag)}>
                                     <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
                                 </li>
                             )

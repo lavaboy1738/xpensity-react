@@ -79,14 +79,13 @@ flex-grow: 1;
 
                 li{
                     margin: 0.8rem 0.8rem;
-                    width: 4rem;
-                    height: 4rem;
+                    width: 5.2rem;
+                    height: 5rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     background-color: #7fe0b6;
-                    font-size: 2rem;
-                    box-shadow:  0 -5px 3px -5px rgba(0,0,0,0.25);
+                    font-size: 3rem;
                 }
         }
     }
