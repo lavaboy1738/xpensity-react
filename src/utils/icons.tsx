@@ -17,7 +17,7 @@ faShoppingCart, faUtensils, faHamburger, faWineGlassAlt, faTshirt, faGamepad, fa
 faDog, faPiggyBank, faGift, faMoneyCheck, faCreditCard, faDonate)}
 
 const totalTags: IconProp[] = ["ellipsis-h", "hamburger", "money-check-alt", "tooth", 
-"capsules", "first-aid", "utensils", "wine-glass-alt", "tshirt" , "taxi", 
+"capsules", "first-aid", "wine-glass-alt", "tshirt" , "taxi", 
 "gamepad", "film", "ticket-alt", "dog", "credit-card", "donate", "gift"]
 
 const incomeTags: IconProp[] = ["piggy-bank", "money-check-alt", "dollar-sign", "gift", "money-check"]

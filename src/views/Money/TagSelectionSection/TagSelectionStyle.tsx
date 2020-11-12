@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const iconAppear = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
 
 const TagSelectionStyle = styled.section`
 overflow-x: hidden;
@@ -21,6 +31,7 @@ flex-grow: 1;
             background-color: #7fe0b6;
             font-size: 2rem;
             transition: 0.3s all ease;
+            animation: 1s ${iconAppear};
 
             &.selected-tag{
                 background-color:  #21d185;
@@ -55,6 +66,9 @@ flex-grow: 1;
         z-index: 10;
         transition: 0.8s all cubic-bezier(0.25, 1, 0.5, 1);
         border-bottom: 2px solid white;
+        display: flex;
+        flex-direction: column;
+
         .title{
                 display: flex;
                 justify-content: space-between;
@@ -71,21 +85,21 @@ flex-grow: 1;
                 }
             }
 
-                ul{
+            ul{
                 display: flex;
                 flex-wrap: wrap;
                 padding: 1.2rem;
                 overflow-y: auto;
 
                 li{
-                    margin: 0.8rem 0.8rem;
-                    width: 5.2rem;
-                    height: 5rem;
+                    margin: 1rem 1rem;
+                    width: 6.5rem;
+                    height: 6.5rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     background-color: #7fe0b6;
-                    font-size: 3rem;
+                    font-size: 4.2rem;
                 }
         }
     }
