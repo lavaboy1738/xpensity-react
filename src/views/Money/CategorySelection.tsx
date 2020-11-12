@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 
 const CategorySelectionStyle = styled.section`
     color: #333333;
@@ -50,11 +50,21 @@ const CategorySelectionStyle = styled.section`
 
 const CategorySelection:React.FunctionComponent = () => {
 
+    const [selectedCategory, setSelectedCategory] = useState("-");
+
+    const onSelectCategory=(category: string)=>{
+        setSelectedCategory((x)=> x = category)
+    }
+
     return(
         <CategorySelectionStyle>
             <ul>
-                <li className="selected category-left">Expenditure</li>
-                <li className="category-right">Income</li>
+                <li className={selectedCategory === "-"? "selected category-left" : "category-left"} 
+                onClick={()=>onSelectCategory("-")}>
+                    Expenditure</li>
+                <li className={selectedCategory === "+"? "selected category-right" : "category-right"}
+                onClick={()=>onSelectCategory("+")}>
+                    Income</li>
             </ul>
         </CategorySelectionStyle>
     )
