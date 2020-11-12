@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
 
 const CommentsStyle = styled.section`
     min-height: 3.5rem;
@@ -18,11 +18,15 @@ const CommentsStyle = styled.section`
 `
 
 const Comments:React.FunctionComponent = () => {
-
+    const [comment, setComment] = useState("");
 
     return(
         <CommentsStyle>
-            <input type="text" placeholder="Add Comments"/>
+            <input type="text" 
+            placeholder="Add Comments" 
+            value={comment}
+            onChange = {(e)=> setComment(e.target.value)}
+            />
         </CommentsStyle>
     )
 }

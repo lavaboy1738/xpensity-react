@@ -53,9 +53,11 @@ flex-grow: 1;
         left: 0;
         width: 100%;
         height: 60vh;
+        opacity: 0;
         background-color: #e3fbf1;
         z-index: 10;
-        transition: 0.3s all ease;
+        transition: 0.8s all cubic-bezier(0.25, 1, 0.5, 1);
+        border-bottom: 2px solid white;
         .title{
                 display: flex;
                 justify-content: space-between;
@@ -87,6 +89,7 @@ flex-grow: 1;
                     align-items: center;
                     background-color: #7fe0b6;
                     font-size: 2rem;
+                    box-shadow:  0 -5px 3px -5px rgba(0,0,0,0.25);
                 }
         }
     }
@@ -96,9 +99,9 @@ flex-grow: 1;
 
 const TagSelection:React.FunctionComponent = () => {
 
-    const [tags, setTags] = useState<IconProp[]>(["home", "taxi", "dollar-sign", "book"])
-    let [isDown, setDropdownStatus] = useState(false);
-    let [selectedTag, setSelectedTag] = useState<IconProp>();
+    const [displayedTags, setDisplayedTags] = useState<IconProp[]>(["home", "taxi", "dollar-sign", "book"])
+    const [isDown, setDropdownStatus] = useState(false);
+    const [selectedTag, setSelectedTag] = useState<IconProp>();
 
     const tagsMenuRef = useRef<HTMLDivElement>(null);
 
@@ -106,6 +109,7 @@ const TagSelection:React.FunctionComponent = () => {
         if(tagsMenuRef.current){
             setDropdownStatus((x) => x = !x);
             tagsMenuRef.current.style.top = isDown? "-100%" : "0%"
+            tagsMenuRef.current.style.opacity = isDown? "0" : "1"
         }
     }
 
@@ -116,7 +120,7 @@ const TagSelection:React.FunctionComponent = () => {
     return(
         <TagSelectionStyle>
             <ol>
-                {tags.map(tag=>{
+                {displayedTags.map(tag=>{
                     return(
                         <li key={tag.toString()} 
                         onClick={()=>onSelectTag(tag)} 
@@ -137,7 +141,7 @@ const TagSelection:React.FunctionComponent = () => {
                     <FontAwesomeIcon icon="chevron-left" className="invis"></FontAwesomeIcon>
                 </div>
                 <ul>
-                    {tags.map(tag=>{
+                    {displayedTags.map(tag=>{
                             return(
                                 <li key={tag.toString()}>
                                     <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
