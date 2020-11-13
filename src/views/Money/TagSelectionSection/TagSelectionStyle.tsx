@@ -29,7 +29,7 @@ flex-grow: 1;
             justify-content: center;
             align-items: center;
             background-color: #7fe0b6;
-            font-size: 2rem;
+            font-size: 2.5rem;
             transition: 0.3s all ease;
             animation: 1s ${iconAppear};
 

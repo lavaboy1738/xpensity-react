@@ -19,37 +19,27 @@ const Money = () => {
       comments: "",
       amount: 0
     });
+
+    const unifiedOnChange = (obj: Partial<typeof selected>) =>{
+      setSelected({
+        ...selected,
+        ...obj
+      })
+    }
+
     return (
       <Layout>
-        <CategorySelection selectedCategory={selected.selectedCategory} onChange={(category) => setSelected({
-          ...selected,
-          selectedCategory: category
-        })} />
+        <CategorySelection selectedCategory={selected.selectedCategory} onChange={(category)=> unifiedOnChange({selectedCategory: category})} />
         <TagSelection selectedTag = {selected.selectedTag} 
-        onChange={(tag) => setSelected({
-          ...selected,
-          selectedTag: tag
-        })} 
+        onChange={(selectedTag) => unifiedOnChange({selectedTag}) } 
         selectedCategory = {selected.selectedCategory}
         displayedExpenditureTags = {selected.displayedExpenditureTags}
         displayedIncomeTags = {selected.displayedIncomeTags}
-        onAddNewExpenditureTag = {(newTagList) => setSelected({
-          ...selected,
-          displayedExpenditureTags: newTagList
-        })}
-        onAddNewIncomeTag = {(newTagList) => setSelected({
-          ...selected,
-          displayedIncomeTags: newTagList
-        })}
+        onAddNewExpenditureTag = {(newTagList) => unifiedOnChange({displayedExpenditureTags: newTagList})}
+        onAddNewIncomeTag = {(newTagList) => unifiedOnChange({displayedIncomeTags: newTagList})}
         />
-        <Comments value={selected.comments} onChange={(newComment) => setSelected({
-          ...selected,
-          comments: newComment
-        })} />
-        <Numpad onChange={(newAmount) => setSelected({
-          ...selected,
-          amount: newAmount
-        })}/>
+        <Comments value={selected.comments} onChange={(newComment) => unifiedOnChange({comments: newComment})} />
+        <Numpad onChange={(newAmount) => unifiedOnChange({amount: newAmount})}/>
       </Layout>
     )
   }
