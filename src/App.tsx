@@ -5,6 +5,7 @@ import Overview from "./views/Overview";
 import Money from "./views/Money";
 import Stats from "./views/Stats";
 import NoMatch from "./views/NoMatch";
+import {EditStatement} from "./views/EditStatement";
 
 import {initTags} from "./utils/icons";
 
@@ -21,13 +22,16 @@ function App() {
   return (
     <Router>
           <Switch >
-            <Route path="/overview">
+            <Route path="/overview/:statementID" exact>
+              <EditStatement/>
+            </Route>
+            <Route path="/overview" exact>
               <Overview />
             </Route>
-            <Route path="/stats">
+            <Route path="/stats" exact>
               <Stats />
             </Route>
-            <Route path="/money">
+            <Route path="/money" exact>
               <Money />
             </Route>
             <Redirect exact from="/" to="/money" />
