@@ -2,9 +2,9 @@ import React from "react";
 import Layout from "../components/Layout"
 import styled from "styled-components";
 
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
+
 
 
 const StatementStyles = styled.div`
@@ -91,7 +91,21 @@ height: 100vh;
 
 `
 
+
 const EditStatement:React.FunctionComponent = () => {
+    const history = useHistory();
+
+    const deleteRecord = () => {
+        const answer = window.confirm("Delete current record?")
+        if(answer){
+            console.log("deleted")
+            history.push("/overview");
+        }else{
+            console.log("failed")
+        }
+    }
+
+
     return (
         <Layout>
             <StatementStyles>
@@ -120,7 +134,7 @@ const EditStatement:React.FunctionComponent = () => {
                             <span>Had lunch with Erich on tuesday evening then we went to the park and took a few shots</span>
                         </div>
                         <div className="button-wrapper">
-                            <button className="delete">Delete</button>
+                            <button className="delete" onClick={deleteRecord}>Delete</button>
                         </div>
                     </div>
                 </div>

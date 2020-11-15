@@ -7,16 +7,14 @@ faShoppingCart, faUtensils, faHamburger, faWineGlassAlt, faTshirt, faGamepad, fa
  faGift,
  faMoneyCheck,
  faCreditCard,
- faDonate,
- faClock,
- faTag} from "@fortawesome/free-solid-svg-icons";
+ faDonate} from "@fortawesome/free-solid-svg-icons";
 
 const initTags = () => {
     library.add(faTaxi, faHome, faPlus, faDollarSign, faBook, faList, faChartBar, faChevronLeft, 
         faBus, faTools
 , faPaw, faBaby, faEllipsisH, faRunning, faMoneyCheckAlt, faTooth, faCapsules, faFirstAid,
 faShoppingCart, faUtensils, faHamburger, faWineGlassAlt, faTshirt, faGamepad, faFilm, faTicketAlt, faPlane, 
-faDog, faPiggyBank, faGift, faMoneyCheck, faCreditCard, faDonate, faClock, faTag)}
+faDog, faPiggyBank, faGift, faMoneyCheck, faCreditCard, faDonate)}
 
 const totalTags: IconProp[] = ["ellipsis-h", "hamburger", "money-check-alt", "tooth", 
 "capsules", "first-aid", "wine-glass-alt", "tshirt" , "taxi", 
