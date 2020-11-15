@@ -1,13 +1,14 @@
 import React from "react";
 import Layout from "../components/Layout";
 import {Link} from "react-router-dom";
+import { createID } from "utils/createID";
 
 const Overview = () =>{
-    const id = "lavaboy1738";
+    const id = createID();
     return (
       <Layout>
-        <div>$90
-          <Link to={"/overview/" + id}></Link>
+        <div>
+          <Link to={"/overview/" + id}>try me bitch</Link>
         </div>
       </Layout>
     )
