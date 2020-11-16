@@ -1,8 +1,6 @@
 import React from "react";
 import Layout from "../components/Layout"
 import styled from "styled-components";
-
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { Link, useParams, useHistory } from "react-router-dom";
 
 
@@ -17,11 +15,9 @@ height: 100vh;
         justify-content: space-between;
         align-items: center;
         background-color: #85eec0;
-        font-size: 2rem;
-        padding: 1rem;
-        min-height: 4rem;
-        a{
-            font-size: inherit;
+        padding: 0.4rem;
+        i{
+            font-size: 3rem;
         }
         span{
             font-size: 2rem;
@@ -29,7 +25,6 @@ height: 100vh;
         }
         .invis{
             opacity: 0;
-            font-size: inherit;
         }
     }
     .details{
@@ -111,16 +106,16 @@ const EditStatement:React.FunctionComponent = () => {
             <StatementStyles>
                 <div className="top-bar">
                     <Link to={"/overview"}>
-                        <FontAwesomeIcon icon="chevron-left"></FontAwesomeIcon>
+                        <i className='bx bx-chevron-left' ></i>
                     </Link>
                     <span>Details</span>
-                    <FontAwesomeIcon icon="chevron-left" className="invis"></FontAwesomeIcon>
+                        <i className='bx bx-chevron-left invis' ></i>
                 </div>
                 <div className="details">
                     <div className="details-content">
                         <div className="details-content-type">
                             <span>Type:</span>
-                            <FontAwesomeIcon icon="hamburger" className="icon"></FontAwesomeIcon>
+                            <i className='bx bxs-book icon'></i>
                         </div>
                         <div className="details-content-amount">
                             <span>Amount:</span>

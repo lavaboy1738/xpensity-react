@@ -5,9 +5,8 @@ import Overview from "./views/Overview";
 import Money from "./views/Money";
 import Stats from "./views/Stats";
 import NoMatch from "./views/NoMatch";
-import {EditStatement} from "./views/EditStatement";
+import {EditStatement} from "./views/StatementDetails";
 
-import {initTags} from "./utils/icons";
 
 import {
   HashRouter as Router,
@@ -15,8 +14,6 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-
-initTags();
 
 function App() {
   return (

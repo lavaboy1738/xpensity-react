@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-
 
 const NavStyle = styled.nav`
   min-height: 4rem;
@@ -18,10 +16,12 @@ const NavStyle = styled.nav`
       align-items: center;
       a{
         text-align: center;
-        padding: 0.3rem 0;
+        padding: 0.2rem 0;
         width: 100%;
-        font-size: 3rem;
         color: #333333;
+        i{
+          font-size: 3.5rem; 
+        }
           &.selected{
           background-color: #68e2ae;
           .nav-icon{
@@ -39,17 +39,17 @@ const Nav = () => {
             <ul>
                 <li>
                   <NavLink to="/overview" activeClassName="selected">
-                      <FontAwesomeIcon icon="list" className = "nav-icon"></FontAwesomeIcon>
+                    <i className='bx bx-list-ul nav-icon'></i>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/money" activeClassName="selected">
-                    <FontAwesomeIcon icon="plus" className = "nav-icon"></FontAwesomeIcon>
+                    <i className='bx bx-plus nav-icon' ></i>
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/stats" activeClassName="selected">
-                    <FontAwesomeIcon icon="chart-bar" className = "nav-icon"></FontAwesomeIcon>
+                    <i className='bx bx-bar-chart nav-icon' ></i>
                   </NavLink>
                 </li>
             </ul>

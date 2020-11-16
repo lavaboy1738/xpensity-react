@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";// import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 
 import {CategorySelection} from "./Money/CategorySelection";
@@ -8,13 +7,15 @@ import {TagSelection} from "./Money/TagSelectionSection/TagSelection";
 import {Comments} from "./Money/Comments";
 import {Numpad} from "./Money/NumpadSection/Numpad";
 
+import {defaultExpenditureTags, defaultIncomeTags} from "../utils/useTags";
+
 type Category = "-" | "+";
 
 const Money = () => {
     const [selected, setSelected] = useState({
-      displayedExpenditureTags:["home", "running", "bus", "tools", "book", "baby", "utensils", "shopping-cart", "paw", "plane"] as IconProp [],
-      displayedIncomeTags:["piggy-bank", "money-check-alt", "dollar-sign", "gift", "money-check"] as IconProp[],
-      selectedTag: undefined as undefined | IconProp,
+      displayedExpenditureTags: defaultExpenditureTags,
+      displayedIncomeTags: defaultIncomeTags ,
+      selectedTag: "" as string,
       selectedCategory: "-" as Category,
       comments: "",
       amount: 0
@@ -30,7 +31,8 @@ const Money = () => {
     return (
       <Layout>
         <CategorySelection selectedCategory={selected.selectedCategory} onChange={(category)=> unifiedOnChange({selectedCategory: category})} />
-        <TagSelection selectedTag = {selected.selectedTag} 
+        <TagSelection 
+        selectedTag = {selected.selectedTag} 
         onChange={(selectedTag) => unifiedOnChange({selectedTag}) } 
         selectedCategory = {selected.selectedCategory}
         displayedExpenditureTags = {selected.displayedExpenditureTags}

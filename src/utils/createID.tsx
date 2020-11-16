@@ -1,8 +1,8 @@
-let id = 0;
+let id = parseInt(window.localStorage.getItem("XpensityID") || "0");
 
 const createID = () => {
     id += 1;
-    console.log(id);
+    window.localStorage.setItem("XpensityID", id.toString());
     return id;
 }
 

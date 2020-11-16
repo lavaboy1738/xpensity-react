@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const NumpadStyle = styled.section`
-    min-height: 30rem;
+    min-height: 30.1rem;
     display: flex;
     flex-direction: column;
     color: #333333;

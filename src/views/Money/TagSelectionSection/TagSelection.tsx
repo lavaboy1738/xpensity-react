@@ -1,17 +1,16 @@
 import {TagSelectionStyle} from "./TagSelectionStyle";
 import React, {useState, useRef} from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import {totalTags} from "../../../utils/icons";
+import {otherTags} from "../../../utils/useTags";
+
 
 type Props = {
-    selectedTag: IconProp | undefined;
-    onChange: (selected: IconProp) => void;
+    selectedTag: string;
+    onChange: (selected: string) => void;
     selectedCategory: "-" | "+";
-    displayedExpenditureTags: IconProp [];
-    displayedIncomeTags: IconProp [];
-    onAddNewExpenditureTag: (newTagList: IconProp[]) => void;
-    onAddNewIncomeTag: (newTagList: IconProp[]) => void;
+    displayedExpenditureTags: string [];
+    displayedIncomeTags: string [];
+    onAddNewExpenditureTag: (newTagList: string[]) => void;
+    onAddNewIncomeTag: (newTagList: string[]) => void;
 }
 
 const TagSelection:React.FunctionComponent<Props> = (props) => {
@@ -33,11 +32,11 @@ const TagSelection:React.FunctionComponent<Props> = (props) => {
         }
     }
 
-    const onSelectTag = (tagIcon: IconProp) => {
+    const onSelectTag = (tagIcon: string) => {
         props.onChange(tagIcon)
     }
 
-    const onAddNewTag = (newTag: IconProp) => {
+    const onAddNewTag = (newTag: string) => {
         if(props.selectedCategory === "-"){
             if(displayedExpenditureTags.indexOf(newTag)>=0){
                 window.alert("Tag Already Exist")
@@ -65,41 +64,41 @@ const TagSelection:React.FunctionComponent<Props> = (props) => {
                 {props.selectedCategory === "-"? 
                     displayedExpenditureTags.map(tag=>{
                         return(
-                            <li key={tag.toString()} 
+                            <li key={tag} 
                             onClick={()=>onSelectTag(tag)} 
                             className={selectedTag === tag? "selected-tag" : ""}
                             >
-                                <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
+                                <i className={tag} ></i>
                             </li>
                         )
                     })
                     :
                     displayedIncomeTags.map(tag=>{
                         return(
-                            <li key={tag.toString()} 
+                            <li key={tag} 
                             onClick={()=>onSelectTag(tag)} 
                             className={selectedTag === tag? "selected-tag" : ""}
                             >
-                                <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
+                                <i className={tag} ></i>
                             </li>
                         )
                     })
                 }
                 <button className="new-tag" onClick={dropdown}>
-                <FontAwesomeIcon icon="plus"></FontAwesomeIcon>
+                    <i className='bx bx-plus' ></i>
                 </button>
             </ol>
             <div className="new-tag-menu"  ref={tagsMenuRef} >
                 <div className="title">
-                    <FontAwesomeIcon icon="chevron-left" onClick={dropdown}></FontAwesomeIcon>
+                    <i className="bx bx-chevron-left" onClick={dropdown}></i>
                     <span>Add New Tag</span>
-                    <FontAwesomeIcon icon="chevron-left" className="invis"></FontAwesomeIcon>
+                    <i className="bx bx-chevron-left invis" onClick={dropdown}></i>
                 </div>
                 <ul>
-                    {totalTags.map(tag=>{
+                    {otherTags.map(tag=>{
                             return(
-                                <li key={tag.toString()} onClick={()=>onAddNewTag(tag)}>
-                                    <FontAwesomeIcon icon={tag}></FontAwesomeIcon>
+                                <li key={tag} onClick={()=>onAddNewTag(tag)}>
+                                    <i className={tag}></i>
                                 </li>
                             )
                     })}

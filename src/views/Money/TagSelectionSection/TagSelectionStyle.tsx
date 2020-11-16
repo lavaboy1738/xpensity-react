@@ -29,9 +29,11 @@ flex-grow: 1;
             justify-content: center;
             align-items: center;
             background-color: #7fe0b6;
-            font-size: 2.5rem;
             transition: 0.3s all ease;
             animation: 1s ${iconAppear};
+            i{
+                font-size: 2.5rem;
+            }
 
             &.selected-tag{
                 background-color:  #21d185;
@@ -51,7 +53,9 @@ flex-grow: 1;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
-            font-size: 2rem;
+            i{
+                font-size: 2.5rem;
+            }
         }
     }
 
@@ -74,11 +78,13 @@ flex-grow: 1;
                 justify-content: space-between;
                 align-items: center;
                 background-color: #85eec0;
-                font-size: 2rem;
-                padding: 1rem;
+                padding: 1.2rem 0.4rem;
                 span{
                     font-size: 2rem;
                     font-weight: 300;
+                }
+                i{
+                    font-size: 3rem;
                 }
                 .invis{
                     opacity: 0;
@@ -92,14 +98,16 @@ flex-grow: 1;
                 overflow-y: auto;
 
                 li{
-                    margin: 1rem 1rem;
+                    margin: 1.1rem 1.1rem;
                     width: 6.5rem;
                     height: 6.5rem;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     background-color: #7fe0b6;
-                    font-size: 4.2rem;
+                    i{
+                        font-size: 4.2rem;
+                    }
                 }
         }
     }
