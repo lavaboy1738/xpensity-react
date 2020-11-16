@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import {useUpdate} from "./useUpdate";
 
 
 const defaultExpenditureTags: string[] = ["bx bx-taxi", "bx bx-train", "bx bx-coffee", 
@@ -24,7 +25,6 @@ const useTags = () => {
     let count = useRef(0);
     useEffect(()=>{
       count.current += 1;
-      console.log(count.current)
     })
 
     //set the initial list, save default list in initialization
@@ -36,10 +36,8 @@ const useTags = () => {
       }
     }, [])
     //listen to changes to the list
-    useEffect(()=>{
-      if(count.current > 2){
-        window.localStorage.setItem("XpensityExTags", JSON.stringify(expenditureTags))
-      }
+    useUpdate(()=>{
+      window.localStorage.setItem("XpensityExTags", JSON.stringify(expenditureTags))
     }, [expenditureTags])
 
     //set the initial list, save default list in initialization
@@ -50,12 +48,11 @@ const useTags = () => {
         setIncomeTags(defaultIncomeTags);
       }
     }, [])
+
     //listen to changes to the list
-    useEffect(()=>{
-      if(count.current > 2){
-        window.localStorage.setItem("XpensityInTags", JSON.stringify(incomeTags))
-      }
-    }, [incomeTags])
+    useUpdate(()=>{
+      window.localStorage.setItem("XpensityInTags", JSON.stringify(incomeTags))
+    },[incomeTags])
 
     return {expenditureTags, incomeTags, setExpenditureTags, setIncomeTags}
 }

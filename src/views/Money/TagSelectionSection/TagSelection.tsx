@@ -1,6 +1,6 @@
 import {TagSelectionStyle} from "./TagSelectionStyle";
 import React, {useState, useRef} from "react";
-import {otherTags, useTags} from "../../../utils/useTags";
+import {otherTags, useTags} from "../../../hooks/useTags";
 
 
 type Props = {
