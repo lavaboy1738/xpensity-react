@@ -7,10 +7,6 @@ type Props = {
     selectedTag: string;
     onChange: (selected: string) => void;
     selectedCategory: "-" | "+";
-    displayedExpenditureTags: string [];
-    displayedIncomeTags: string [];
-    onAddNewExpenditureTag: (newTagList: string[]) => void;
-    onAddNewIncomeTag: (newTagList: string[]) => void;
 }
 
 const TagSelection:React.FunctionComponent<Props> = (props) => {
