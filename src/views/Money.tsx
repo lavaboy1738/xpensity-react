@@ -7,14 +7,14 @@ import {TagSelection} from "./Money/TagSelectionSection/TagSelection";
 import {Comments} from "./Money/Comments";
 import {Numpad} from "./Money/NumpadSection/Numpad";
 
-import {defaultExpenditureTags, defaultIncomeTags} from "../utils/useTags";
+import {useTags} from "../utils/useTags";
 
 type Category = "-" | "+";
 
 const Money = () => {
     const [selected, setSelected] = useState({
-      displayedExpenditureTags: defaultExpenditureTags,
-      displayedIncomeTags: defaultIncomeTags ,
+      displayedExpenditureTags: useTags().expenditureTags,
+      displayedIncomeTags: useTags().incomeTags ,
       selectedTag: "" as string,
       selectedCategory: "-" as Category,
       comments: "",

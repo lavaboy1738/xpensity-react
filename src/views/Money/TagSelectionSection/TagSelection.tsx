@@ -1,6 +1,6 @@
 import {TagSelectionStyle} from "./TagSelectionStyle";
 import React, {useState, useRef} from "react";
-import {otherTags} from "../../../utils/useTags";
+import {otherTags, useTags} from "../../../utils/useTags";
 
 
 type Props = {
@@ -14,9 +14,8 @@ type Props = {
 }
 
 const TagSelection:React.FunctionComponent<Props> = (props) => {
-
-    const displayedExpenditureTags = props.displayedExpenditureTags;
-    const displayedIncomeTags = props.displayedIncomeTags;
+    const {expenditureTags, setExpenditureTags} = useTags();
+    const {incomeTags, setIncomeTags} = useTags();
 
     const [isDown, setDropdownStatus] = useState(false);
 
@@ -38,21 +37,17 @@ const TagSelection:React.FunctionComponent<Props> = (props) => {
 
     const onAddNewTag = (newTag: string) => {
         if(props.selectedCategory === "-"){
-            if(displayedExpenditureTags.indexOf(newTag)>=0){
+            if(expenditureTags.indexOf(newTag)>=0){
                 window.alert("Tag Already Exist")
             }else{
-                    const copy = [...displayedExpenditureTags]
-                    copy.push(newTag)
-                    props.onAddNewExpenditureTag(copy)
+                    setExpenditureTags([...expenditureTags, newTag])
                     dropdown();
             }
         }else{
-            if(displayedIncomeTags.indexOf(newTag)>=0){
+            if(incomeTags.indexOf(newTag)>=0){
                 window.alert("Tag Already Exist")
             }else{
-                    const copy = [...displayedIncomeTags]
-                    copy.push(newTag)
-                    props.onAddNewIncomeTag(copy)
+                    setIncomeTags([...incomeTags, newTag])
                     dropdown();
             }
         }
@@ -62,7 +57,7 @@ const TagSelection:React.FunctionComponent<Props> = (props) => {
         <TagSelectionStyle>
             <ol>
                 {props.selectedCategory === "-"? 
-                    displayedExpenditureTags.map(tag=>{
+                    expenditureTags.map(tag=>{
                         return(
                             <li key={tag} 
                             onClick={()=>onSelectTag(tag)} 
@@ -73,7 +68,7 @@ const TagSelection:React.FunctionComponent<Props> = (props) => {
                         )
                     })
                     :
-                    displayedIncomeTags.map(tag=>{
+                    incomeTags.map(tag=>{
                         return(
                             <li key={tag} 
                             onClick={()=>onSelectTag(tag)} 
