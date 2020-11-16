@@ -2,12 +2,12 @@ import {NumpadStyle} from "./NumpadStyle";
 import React, {useState} from "react";
 
 type Props = {
-    onChange: (total: number)=>void;
+    onChange: (total: string)=>void;
+    onOk: ()=>void;
+    value: string;
 }
 
 const Numpad:React.FunctionComponent<Props> = (props) =>{
-
-    const [output, setOutput] = useState("0")
 
     const onNumpad = (event: React.MouseEvent) => {
         const text = (event.target as HTMLButtonElement).textContent;
@@ -23,31 +23,31 @@ const Numpad:React.FunctionComponent<Props> = (props) =>{
             case "7":
             case "8":
             case "9":
-                if(output === "0"){
-                    setOutput(text)
-                }else if (output.length === 10){
+                if(props.value === "0"){
+                    props.onChange(text);
+                }else if (props.value.length === 10){
                     return
                 }else{
-                    setOutput(output+ text);
+                    props.onChange(props.value+text)
                 }
                 break;
             case ".":
-                if(output.indexOf(".")>=0){return}
-                setOutput(output+ ".")
+                if(props.value.indexOf(".")>=0){return}
+                props.onChange(props.value + text)
                 break;
             case "Del.":
-                if(output.length === 1){
-                    setOutput("0");
+                if(props.value.length === 1){
+                    props.onChange("0")
                 }else{
-                    setOutput(output.slice(0, -1))
+                    props.onChange(props.value.slice(0, -1));
                 }
                 break;
             case "C":
-                setOutput("0");
+                props.onChange("0");
                 break;
             case "OK":
-                props.onChange(parseFloat(output));
-                setOutput("0");
+                props.onOk();
+                props.onChange("0")
                 break;
         }
     }
@@ -55,7 +55,7 @@ const Numpad:React.FunctionComponent<Props> = (props) =>{
     return(
         <NumpadStyle>
             <div className="display">
-                {output}
+                {props.value}
             </div>
             <div className="numbers clearfix" onClick={onNumpad}>
                 <button>1</button>

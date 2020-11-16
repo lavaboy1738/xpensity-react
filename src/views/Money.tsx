@@ -7,6 +7,8 @@ import {TagSelection} from "./Money/TagSelectionSection/TagSelection";
 import {Comments} from "./Money/Comments";
 import {Numpad} from "./Money/NumpadSection/Numpad";
 
+import {useStatement} from "../hooks/useStatement";
+
 type Category = "-" | "+";
 
 const Money = () => {
@@ -14,7 +16,7 @@ const Money = () => {
       selectedTag: "" as string,
       selectedCategory: "-" as Category,
       comments: "",
-      amount: 0
+      amount: "0"
     });
 
     const unifiedOnChange = (obj: Partial<typeof selected>) =>{
@@ -22,6 +24,12 @@ const Money = () => {
         ...selected,
         ...obj
       })
+    }
+
+    const {addStatement} = useStatement();
+
+    const submit = () => {
+      addStatement(selected);
     }
 
     return (
@@ -33,7 +41,7 @@ const Money = () => {
         selectedCategory = {selected.selectedCategory}
         />
         <Comments value={selected.comments} onChange={(newComment) => unifiedOnChange({comments: newComment})} />
-        <Numpad onChange={(newAmount) => unifiedOnChange({amount: newAmount})}/>
+        <Numpad value={selected.amount} onChange={(newAmount) => unifiedOnChange({amount: newAmount})} onOk={()=>{submit()}} />
       </Layout>
     )
   }
