@@ -38,7 +38,7 @@ const Money = () => {
       const result = addStatement(selected);
       if(result){
         alert("Success");
-        history.push("/overview")
+        setSelected(defaultData)
       }
     }
 

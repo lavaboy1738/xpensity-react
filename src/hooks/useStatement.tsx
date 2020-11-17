@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {createID} from "../utils/createID";
 
 type Statement = {
@@ -10,13 +10,25 @@ type Statement = {
     createdAt: string
 }
 
-const useStatement = () => {
-    const [statements, setStatements] = useState<Statement[]>([]);
+type NewStatement = {
+    selectedTag: string;
+    selectedCategory: "-" | "+";
+    comments: string;
+    amount: number;
+    id: Number;
+    createdAt: string
+}
 
-    // const savedStatements = JSON.parse(window.localStorage.getItem("XpensityStatements") || "[]");
-    // if(savedStatements.length !== 0){
-    //     setStatements(savedStatements)
-    // }
+const useStatement = () => {
+    const [statements, setStatements] = useState<NewStatement[]>([]);
+
+    const savedStatements = JSON.parse(window.localStorage.getItem("XpensityStatements") || "[]");
+
+    useEffect(()=>{
+        if(savedStatements.length > 0){
+            setStatements(savedStatements);
+        }
+    }, [])
 
     const addStatement = (statement: Statement) =>{
         if(statement.selectedTag===""){
@@ -26,10 +38,12 @@ const useStatement = () => {
             alert("Amount Cannot be 0")
             return false;
         }else{
-            statement.id = createID();
-            statement.createdAt = new Date().toISOString();
+            //take care of the amount if there are extra zeros at the end
+            const statementCopy = {...statement, amount: parseFloat(statement.amount)}
+            statementCopy.id = createID();
+            statementCopy.createdAt = new Date().toISOString();
             const copy = [...statements]
-            copy.push(statement)
+            copy.push(statementCopy)
             setStatements(copy)
             window.localStorage.setItem("XpensityStatements", JSON.stringify(copy))
             return true
