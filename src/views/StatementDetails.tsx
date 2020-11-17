@@ -96,8 +96,7 @@ const EditStatement:React.FunctionComponent = () => {
     const {statementID} = useParams<Params>();
     const {getStatement} = useStatement();
     const history = useHistory();
-    const currentStatement = getStatement(statementID)
-    const copy = {...currentStatement}
+    const currentStatement = getStatement(statementID) || {}
 
     const deleteRecord = () => {
         const answer = window.confirm("Delete current record?")
@@ -124,18 +123,18 @@ const EditStatement:React.FunctionComponent = () => {
                     <div className="details-content">
                         <div className="details-content-type">
                             <span>Type:</span>
-                            <i className={copy.selectedTag}></i>
+                            <i className={currentStatement.selectedTag}></i>
                         </div>
                         <div className="details-content-amount">
                             <span>Amount:</span>
-                            <span>{copy.amount}</span>
+                            <span>{currentStatement.amount}</span>
                         </div>
                         <div className="details-content-time">
                             <span>Time:</span>
-                            <span>{day(copy.createdAt).format("MMM-D HH:mm:ss")}</span>
+                            <span>{day(currentStatement.createdAt).format("MMM-D HH:mm:ss")}</span>
                         </div>
                         <div className="details-content-comments">
-                            <span>{copy.comments}</span>
+                            <span>{currentStatement.comments}</span>
                         </div>
                         <div className="button-wrapper">
                             <button className="delete" onClick={deleteRecord}>Delete</button>

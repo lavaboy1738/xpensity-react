@@ -10,7 +10,7 @@ type Statement = {
     createdAt: string
 }
 
-type NewStatement = {
+export type NewStatement = {
     selectedTag: string;
     selectedCategory: "-" | "+";
     comments: string;
