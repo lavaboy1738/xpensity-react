@@ -23,13 +23,12 @@ type Props = {
 }
 
 const Comments:React.FunctionComponent<Props> = (props) => {
-    const comment = props.value;
 
     return(
         <CommentsStyle>
             <input type="text" 
-            placeholder="Add Comments" 
-            value={comment}
+            placeholder="Add Comments"
+            value={props.value}
             onChange = {(e)=>{props.onChange(e.target.value)}}
             />
         </CommentsStyle>

@@ -8,16 +8,22 @@ import {Comments} from "./Money/Comments";
 import {Numpad} from "./Money/NumpadSection/Numpad";
 
 import {useStatement} from "../hooks/useStatement";
+import {useHistory} from "react-router-dom";
 
 type Category = "-" | "+";
 
+const defaultData = {
+  selectedTag: "" as string,
+  selectedCategory: "-" as Category,
+  comments: "",
+  amount: "0",
+  id: 0,
+  createdAt: ""
+}
+
 const Money = () => {
-    const [selected, setSelected] = useState({
-      selectedTag: "" as string,
-      selectedCategory: "-" as Category,
-      comments: "",
-      amount: "0"
-    });
+    const [selected, setSelected] = useState(defaultData);
+    const history = useHistory();
 
     const unifiedOnChange = (obj: Partial<typeof selected>) =>{
       setSelected({
@@ -30,6 +36,8 @@ const Money = () => {
 
     const submit = () => {
       addStatement(selected);
+      alert("Success");
+      history.push("/overview");
     }
 
     return (
