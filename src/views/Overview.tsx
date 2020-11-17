@@ -4,6 +4,7 @@ import {CategorySelection} from "../views/Money/CategorySelection";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {useStatement} from "../hooks/useStatement";
+import day from "dayjs";
 
 const OverviewStyles = styled.div`
 display: flex;
@@ -29,10 +30,11 @@ const Overview = () =>{
             <div className="details">
               {statements.map((statement)=>{
                 return(
-                  <Link to={`/overview/${statement.id}`}>
+                  <Link to={`/overview/${statement.id}`} key={statement.id} >
                     <i className = {statement.selectedTag}></i>
                     <span>{statement.comments}</span>
                     <span>{statement.amount}</span>
+                    <span>{day(statement.createdAt).format("YYYY-MM-DD")}</span>
                   </Link>
                 )
               })}

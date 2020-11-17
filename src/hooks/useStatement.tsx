@@ -6,7 +6,7 @@ type Statement = {
     selectedCategory: "-" | "+";
     comments: string;
     amount: string;
-    id: Number;
+    id: number;
     createdAt: string
 }
 
@@ -15,7 +15,7 @@ type NewStatement = {
     selectedCategory: "-" | "+";
     comments: string;
     amount: number;
-    id: Number;
+    id: number;
     createdAt: string
 }
 
@@ -50,7 +50,11 @@ const useStatement = () => {
         }
     }
 
-    return { statements, addStatement}
+    const getStatement = (statementID: string) => {
+        return statements.filter(statement=> statement.id === parseInt(statementID))[0]
+    }
+
+    return { statements, addStatement, getStatement}
 }
 
 export {useStatement}

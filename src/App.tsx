@@ -22,7 +22,7 @@ function App() {
             <Route path="/overview/:statementID" exact>
               <EditStatement/>
             </Route>
-            <Route path="/overview" exact>
+            <Route path="/overview/" exact>
               <Overview />
             </Route>
             <Route path="/stats" exact>

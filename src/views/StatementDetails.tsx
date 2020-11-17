@@ -2,6 +2,8 @@ import React from "react";
 import Layout from "../components/Layout"
 import styled from "styled-components";
 import { Link, useParams, useHistory } from "react-router-dom";
+import {useStatement} from "../hooks/useStatement";
+import day from "dayjs"
 
 
 
@@ -43,7 +45,7 @@ height: 100vh;
                 span{
                     font-size: 1.8rem;
                 }
-                .icon{
+                i{
                     font-size: 1.8rem;
                 }
             }
@@ -86,9 +88,16 @@ height: 100vh;
 
 `
 
+type Params = {
+    statementID: string
+}
 
 const EditStatement:React.FunctionComponent = () => {
+    const {statementID} = useParams<Params>();
+    const {getStatement} = useStatement();
     const history = useHistory();
+    const currentStatement = getStatement(statementID)
+    const copy = {...currentStatement}
 
     const deleteRecord = () => {
         const answer = window.confirm("Delete current record?")
@@ -115,18 +124,18 @@ const EditStatement:React.FunctionComponent = () => {
                     <div className="details-content">
                         <div className="details-content-type">
                             <span>Type:</span>
-                            <i className='bx bxs-book icon'></i>
+                            <i className={copy.selectedTag}></i>
                         </div>
                         <div className="details-content-amount">
                             <span>Amount:</span>
-                            <span>$26</span>
+                            <span>{copy.amount}</span>
                         </div>
                         <div className="details-content-time">
                             <span>Time:</span>
-                            <span>2020-11-14 14:26:35</span>
+                            <span>{day(copy.createdAt).format("MMM-D HH:mm:ss")}</span>
                         </div>
                         <div className="details-content-comments">
-                            <span>Had lunch with Erich on tuesday evening then we went to the park and took a few shots</span>
+                            <span>{copy.comments}</span>
                         </div>
                         <div className="button-wrapper">
                             <button className="delete" onClick={deleteRecord}>Delete</button>
