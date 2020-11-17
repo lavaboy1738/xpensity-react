@@ -10,11 +10,13 @@ import dayjs from "dayjs";
 const OverviewStyles = styled.div`
 display: flex;
 flex-direction: column;
+overflow-y: auto;
   .details{
     flex-grow: 1;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    
     .statements-by-date{
       .title{
         background-color: #74e9b6;
@@ -71,14 +73,16 @@ const Overview = () =>{
   const [selectedCategory, setSelectedCateory] = useState<"-" | "+">("-")
   const {statements} = useStatement();
   const selectStatements = statements.filter(statement => statement.selectedCategory === selectedCategory)
-  const hash: {[Key: string]: NewStatement[]} = {};
+  const hash: {[Key: string]: {total: number, statements: NewStatement[]}} = {};
 
   selectStatements.forEach(statement => {
     const key = day(statement.createdAt).format("YYYY-MM-DD")
     if(!(key in hash)){
-      hash[key] = []
+      hash[key] = {total: statement.amount, statements: [statement]}
+    }else{
+      hash[key].total += statement.amount;
+      hash[key].statements.push(statement)
     }
-    hash[key].push(statement)
   })
 
   const arrayByDate = Object.entries(hash).sort((a,b)=>{
@@ -115,15 +119,15 @@ const Overview = () =>{
           <CategorySelection selectedCategory={selectedCategory} 
             onChange={(value) => setSelectedCateory(value)} />
             <div className="details">
-              {arrayByDate.map(([date, statements])=>{
+              {arrayByDate.map(([date, values])=>{
                 return(
                   <div className = "statements-by-date" key={date} >
                     <div className="title">
                         <span className="date">{convertDate(date)}</span>
-                        <span className="total">$total</span>
+                        <span className="total">${values.total}</span>
                     </div>
                     <div className="statements">
-                        {statements.map((statement)=>{
+                        {values.statements.map((statement)=>{
                           return(
                             <Link to={`/overview/${statement.id}`} key={statement.id} className="statement">
                               <i className = {statement.selectedTag}></i>
