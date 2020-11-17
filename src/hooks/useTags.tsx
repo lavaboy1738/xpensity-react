@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {useUpdate} from "./useUpdate";
 
 
@@ -15,20 +15,12 @@ const otherTags: string[] = ["bx bx-beer", "bx bx-car", "bx bx-credit-card","bx 
 "bx bxl-amazon", "bx bxl-ebay", "bx bxl-apple"]
 
 const useTags = () => {
-    const [expenditureTags, setExpenditureTags] = useState<string[]>([]);
     const [incomeTags, setIncomeTags] = useState<string[]>([]);
-
-    const savedExTags = JSON.parse(window.localStorage.getItem("XpensityExTags") || "[]");
-    const savedInTags = JSON.parse(window.localStorage.getItem("XpensityInTags") || "[]");
-
-    //use count to help skip the first two time
-    let count = useRef(0);
-    useEffect(()=>{
-      count.current += 1;
-    })
+    const [expenditureTags, setExpenditureTags] = useState<string[]>([]);
 
     //set the initial list, save default list in initialization
     useEffect(()=>{
+      const savedExTags = JSON.parse(window.localStorage.getItem("XpensityExTags") || "[]");
       if(savedExTags.length > 0){
         setExpenditureTags(savedExTags);
       }else{
@@ -38,10 +30,11 @@ const useTags = () => {
     //listen to changes to the list
     useUpdate(()=>{
       window.localStorage.setItem("XpensityExTags", JSON.stringify(expenditureTags))
-    }, [expenditureTags])
+    }, expenditureTags)
 
     //set the initial list, save default list in initialization
     useEffect(()=>{
+      const savedInTags = JSON.parse(window.localStorage.getItem("XpensityInTags") || "[]");
       if(savedInTags.length>0){
         setIncomeTags(savedInTags);
       }else{
@@ -52,7 +45,7 @@ const useTags = () => {
     //listen to changes to the list
     useUpdate(()=>{
       window.localStorage.setItem("XpensityInTags", JSON.stringify(incomeTags))
-    },[incomeTags])
+    }, incomeTags)
 
     return {expenditureTags, incomeTags, setExpenditureTags, setIncomeTags}
 }

@@ -10,8 +10,7 @@ type Props = {
 }
 
 const TagSelection:React.FunctionComponent<Props> = (props) => {
-    const {expenditureTags, setExpenditureTags} = useTags();
-    const {incomeTags, setIncomeTags} = useTags();
+    const {incomeTags, setIncomeTags, expenditureTags, setExpenditureTags} = useTags();
 
     const [isDown, setDropdownStatus] = useState(false);
 

@@ -22,9 +22,8 @@ export type NewStatement = {
 const useStatement = () => {
     const [statements, setStatements] = useState<NewStatement[]>([]);
 
-    const savedStatements = JSON.parse(window.localStorage.getItem("XpensityStatements") || "[]");
-
     useEffect(()=>{
+        const savedStatements = JSON.parse(window.localStorage.getItem("XpensityStatements") || "[]");
         if(savedStatements.length > 0){
             setStatements(savedStatements);
         }

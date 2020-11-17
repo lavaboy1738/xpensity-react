@@ -8,7 +8,6 @@ import {Comments} from "./Money/Comments";
 import {Numpad} from "./Money/NumpadSection/Numpad";
 
 import {useStatement} from "../hooks/useStatement";
-import {useHistory} from "react-router-dom";
 
 type Category = "-" | "+";
 
