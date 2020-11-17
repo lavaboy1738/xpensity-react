@@ -23,7 +23,6 @@ const defaultData = {
 
 const Money = () => {
     const [selected, setSelected] = useState(defaultData);
-    const history = useHistory();
 
     const unifiedOnChange = (obj: Partial<typeof selected>) =>{
       setSelected({
@@ -47,7 +46,7 @@ const Money = () => {
         <CategorySelection selectedCategory={selected.selectedCategory} onChange={(category)=> unifiedOnChange({selectedCategory: category})} />
         <TagSelection 
         selectedTag = {selected.selectedTag} 
-        onChange={(selectedTag) => unifiedOnChange({selectedTag}) } 
+        onChange={(selectedTag) =>  unifiedOnChange({selectedTag}) } 
         selectedCategory = {selected.selectedCategory}
         />
         <Comments value={selected.comments} onChange={(newComment) => unifiedOnChange({comments: newComment})} />

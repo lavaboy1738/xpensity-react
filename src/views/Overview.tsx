@@ -16,7 +16,7 @@ overflow-y: auto;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    
+
     .statements-by-date{
       .title{
         background-color: #74e9b6;
@@ -81,7 +81,7 @@ const Overview = () =>{
       hash[key] = {total: statement.amount, statements: [statement]}
     }else{
       hash[key].total += statement.amount;
-      hash[key].statements.push(statement)
+      hash[key].statements.unshift(statement)
     }
   })
 

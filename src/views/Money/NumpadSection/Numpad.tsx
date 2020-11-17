@@ -47,7 +47,6 @@ const Numpad:React.FunctionComponent<Props> = (props) =>{
                 break;
             case "OK":
                 props.onOk();
-                props.onChange("0")
                 break;
         }
     }
