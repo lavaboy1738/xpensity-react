@@ -35,9 +35,11 @@ const Money = () => {
     const {addStatement} = useStatement();
 
     const submit = () => {
-      addStatement(selected);
-      alert("Success");
-      history.push("/overview");
+      const result = addStatement(selected);
+      if(result){
+        alert("Success");
+        history.push("/overview")
+      }
     }
 
     return (

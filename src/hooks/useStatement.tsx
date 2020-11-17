@@ -13,13 +13,27 @@ type Statement = {
 const useStatement = () => {
     const [statements, setStatements] = useState<Statement[]>([]);
 
+    // const savedStatements = JSON.parse(window.localStorage.getItem("XpensityStatements") || "[]");
+    // if(savedStatements.length !== 0){
+    //     setStatements(savedStatements)
+    // }
+
     const addStatement = (statement: Statement) =>{
-        statement.id = createID();
-        statement.createdAt = new Date().toISOString();
-        const copy = [...statements]
-        copy.push(statement)
-        setStatements(copy)
-        window.localStorage.setItem("XpensityStatements", JSON.stringify(copy))
+        if(statement.selectedTag===""){
+            alert("Please Select a Tag")
+            return false;
+        }else if(statement.amount==="0"){
+            alert("Amount Cannot be 0")
+            return false;
+        }else{
+            statement.id = createID();
+            statement.createdAt = new Date().toISOString();
+            const copy = [...statements]
+            copy.push(statement)
+            setStatements(copy)
+            window.localStorage.setItem("XpensityStatements", JSON.stringify(copy))
+            return true
+        }
     }
 
     return { statements, addStatement}
