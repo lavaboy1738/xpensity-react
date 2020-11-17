@@ -54,7 +54,13 @@ const useStatement = () => {
         return statements.filter(statement=> statement.id === parseInt(statementID))[0]
     }
 
-    return { statements, addStatement, getStatement}
+    const deleteStatement = (statementID: string) => {
+        const newStatements = statements.filter(statement=> statement.id !== parseInt(statementID));
+        setStatements(newStatements)
+        window.localStorage.setItem("XpensityStatements", JSON.stringify(newStatements))
+    }
+
+    return { statements, addStatement, getStatement, deleteStatement}
 }
 
 export {useStatement}

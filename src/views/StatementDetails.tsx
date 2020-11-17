@@ -94,17 +94,16 @@ type Params = {
 
 const EditStatement:React.FunctionComponent = () => {
     const {statementID} = useParams<Params>();
-    const {getStatement} = useStatement();
+    const {getStatement, deleteStatement} = useStatement();
     const history = useHistory();
     const currentStatement = getStatement(statementID) || {}
 
     const deleteRecord = () => {
         const answer = window.confirm("Delete current record?")
         if(answer){
-            console.log("deleted")
+            deleteStatement(statementID)
+            alert("Success")
             history.push("/overview");
-        }else{
-            console.log("failed")
         }
     }
 
