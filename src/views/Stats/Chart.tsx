@@ -1,13 +1,21 @@
 import { Category } from "components/CategorySelection";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
+import {CustomChart} from "../../utils/customChart";
+import {useStatement, NewStatement} from "../../hooks/useStatement";
+import day from "dayjs";
 
 const ChartStyles = styled.div`
 
 `
+type ArrayByDate = [string, {
+    total: number;
+    statements: NewStatement[];
+}][]
 
 type Prop = {
-    selectedCategory: Category
+    selectedCategory: Category,
+    value: ArrayByDate
 }
 
 const Chart: React.FunctionComponent<Prop> = (props) =>{
@@ -18,58 +26,9 @@ const Chart: React.FunctionComponent<Prop> = (props) =>{
 
     useEffect(()=>{
         const mychart = echarts.init(chartRef.current);
-        const option = {
-            grid:{
-                left: 40,
-                top: 20,
-                right: 5,
-                bottom: 20
-            },
-            xAxis: {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' , 
-                'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat',
-                'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat',
-                'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                axisTick: {
-                    alignWithLabel: true
-                }
-            },
-            yAxis: {
-                type: 'value',
-                scale: "true"
-            },
-            tooltip: {
-                show: true,
-                triggerOn: "click",
-                position: "top"
-            },
-            color:
-                ["#25df8e"],
-            series: [{
-                symbolSize: 30,
-                data: [820, 932, 901, 934, 1290, 1330, 1320,
-                    820, 932, 901, 934, 1290, 1330, 1320,
-                    820, 932, 901, 934, 1290, 1330, 1320,
-                    820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'line',
-                symbol: "diamond",
-                itemStyle:{
-                    borderWidth: 5
-                },
-                lineStyle: {
-                    width: 8
-                },
-                areaStyle: {
-                    color: "#25df8e",
-                    opacity: 0.2
-                }
-            }],
-            animationDuration: 2000
-        };
-
+        const option = CustomChart(props.value);
         mychart.setOption(option)
-    }, [props.selectedCategory, echarts])
+    }, [props.selectedCategory, echarts, props.value])
 
 
     return (
