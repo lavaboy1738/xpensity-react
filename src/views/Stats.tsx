@@ -4,6 +4,7 @@ import {CategorySelection, Category} from "../components/CategorySelection";
 import styled from "styled-components";
 import {Chart} from "./Stats/Chart";
 import {useStatement, NewStatement} from "../hooks/useStatement"
+import {NoData} from "../components/NoData";
 import day from "dayjs";
 
 const StatsStyles = styled.div`
@@ -55,10 +56,15 @@ const Stats = () => {
         <StatsStyles>
           <CategorySelection selectedCategory={selectedCategory} 
           onChange={(value: Category) => setSelectedCategory(value)} ></CategorySelection>
+          {arrayByDate.length===0? 
+            <NoData/>
+        :
+        <div>
           <div className="wrapper">
             <Chart selectedCategory={selectedCategory} value={arrayByDate} />
           </div>
           <div className="title">{selectedCategory === "-"? "Spending" : "Income"} Data of Past 30 Days</div>
+        </div>}
         </StatsStyles>
       </Layout>
     )

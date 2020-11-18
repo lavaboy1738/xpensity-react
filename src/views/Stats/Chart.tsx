@@ -2,8 +2,7 @@ import { Category } from "components/CategorySelection";
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import {CustomChart} from "../../utils/customChart";
-import {useStatement, NewStatement} from "../../hooks/useStatement";
-import day from "dayjs";
+import {NewStatement} from "../../hooks/useStatement";
 
 const ChartStyles = styled.div`
 

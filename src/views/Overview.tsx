@@ -4,6 +4,7 @@ import {CategorySelection} from "../components/CategorySelection";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {NewStatement, useStatement} from "../hooks/useStatement";
+import {NoData} from "../components/NoData";
 import day from "dayjs";
 import dayjs from "dayjs";
 
@@ -118,6 +119,9 @@ const Overview = () =>{
         <OverviewStyles>
           <CategorySelection selectedCategory={selectedCategory} 
             onChange={(value) => setSelectedCateory(value)} />
+            {arrayByDate.length===0?
+            <NoData/>
+            :
             <div className="details">
               {arrayByDate.map(([date, values])=>{
                 return(
@@ -141,6 +145,7 @@ const Overview = () =>{
                 )
               })}
             </div>
+            }
         </OverviewStyles>
       </Layout>
     )
