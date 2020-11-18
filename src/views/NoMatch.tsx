@@ -2,7 +2,9 @@ import React from "react";
 
 const NoMatch = () =>{
     return (
-      <h1>What the fuck bruh?</h1>
+      <div>
+        <h1>"If you don't have sauce, then you're lost. <br/>But you can also get lost in the sauce."</h1>
+      </div>
     )
   }
 

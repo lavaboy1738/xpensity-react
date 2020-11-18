@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Layout from "../components/Layout";
-import {CategorySelection} from "../views/Money/CategorySelection";
+import {CategorySelection} from "../components/CategorySelection";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
 import {NewStatement, useStatement} from "../hooks/useStatement";

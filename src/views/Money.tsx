@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "../components/Layout";// import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-solid-svg-icons";
 
 
-import {CategorySelection} from "./Money/CategorySelection";
+import {CategorySelection} from "../components/CategorySelection";
 import {TagSelection} from "./Money/TagSelectionSection/TagSelection";
 import {Comments} from "./Money/Comments";
 import {Numpad} from "./Money/NumpadSection/Numpad";

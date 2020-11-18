@@ -47,7 +47,7 @@ const CategorySelectionStyle = styled.section`
     }
 `
 
-type Category = "-" | "+";
+export type Category = "-" | "+";
 
 type Props = {
     selectedCategory: Category;
@@ -56,8 +56,6 @@ type Props = {
 
 
 const CategorySelection:React.FunctionComponent<Props> = (props) => {
-
-    // const [selectedCategory, setSelectedCategory] = useState("-");
 
     const selectedCategory = props.selectedCategory;
 
