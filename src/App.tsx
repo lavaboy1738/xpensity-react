@@ -16,6 +16,8 @@ import {
 } from "react-router-dom";
 
 function App() {
+  const width = window.innerWidth;
+
   return (
     <Router>
           <Switch >

@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "./Nav";
 import styled from "styled-components";
+import {Desktop} from "../views/Desktop";
 
 
 const height = window.innerHeight;
@@ -21,14 +22,21 @@ const Main = styled.div`
 
 
 const Layout = (props: any) => {
+  const width = window.innerWidth;
 
     return (
-        <Wrapper style={{height: `${height}px`}} >
+      <>
+          {width > 400? 
+          <Desktop/>
+          :
+          <Wrapper style={{height: `${height}px`}} >
           <Main>
             {props.children}
           </Main>
           <Nav/>
         </Wrapper>
+        }
+      </>
       )
 }
 
