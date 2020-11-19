@@ -44,7 +44,7 @@ const Nav = () => {
                 </li>
                 <li>
                   <NavLink to="/money" activeClassName="selected">
-                    <i className='bx bx-plus nav-icon' ></i>
+                    <i className='bx bx-edit nav-icon' ></i>
                   </NavLink>
                 </li>
                 <li>

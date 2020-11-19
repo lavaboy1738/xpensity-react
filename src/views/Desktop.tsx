@@ -14,7 +14,6 @@ const desktopAnimations = keyframes`
             opacity: 1;
         }
 `
-
 const DesktopStyles = styled.div`
         background-image: linear-gradient(78deg, transparent 0%, transparent 36%,rgba(104,226,174, 0.09) 36%, rgba(104,226,174, 0.09) 56%,transparent 56%, transparent 100%),linear-gradient(30deg, transparent 0%, transparent 2%,rgba(104,226,174, 0.12) 2%, rgba(104,226,174, 0.12) 75%,transparent 75%, transparent 100%),linear-gradient(206deg, transparent 0%, transparent 68%,rgba(104,226,174, 0.16) 68%, rgba(104,226,174, 0.16) 99%,transparent 99%, transparent 100%),linear-gradient(90deg, rgba(104,226,174, 0.12),rgba(104,226,174, 0.12));
         width: 100vw;
@@ -28,9 +27,7 @@ const DesktopStyles = styled.div`
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            /* @media (min-width: 768px) {
-                width: 730px;
-            } */
+
             &-left {
                 width: 55%;
                 &-upper{

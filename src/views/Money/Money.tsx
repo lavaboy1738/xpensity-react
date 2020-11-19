@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Layout from "../components/Layout";// import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-solid-svg-icons";
+import Layout from "../../components/Layout";// import {faTaxi, faHome, faPlus, faDollarSign, faBook} from "@fortawesome/free-solid-svg-icons";
 
 
-import {CategorySelection} from "../components/CategorySelection";
-import {TagSelection} from "./Money/TagSelectionSection/TagSelection";
-import {Comments} from "./Money/Comments";
-import {Numpad} from "./Money/NumpadSection/Numpad";
+import {CategorySelection} from "../../components/CategorySelection";
+import {TagSelection} from "./TagSelectionSection/TagSelection";
+import {Comments} from "./Comments";
+import {Numpad} from "./NumpadSection/Numpad";
 
-import {useStatement} from "../hooks/useStatement";
+import {useStatement} from "../../hooks/useStatement";
 
 type Category = "-" | "+";
 

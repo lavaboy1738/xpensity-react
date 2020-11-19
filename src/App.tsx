@@ -2,7 +2,7 @@ import React from 'react';
 import "./helper.scss";
 
 import Overview from "./views/Overview";
-import Money from "./views/Money";
+import Money from "./views/Money/Money";
 import Stats from "./views/Stats";
 import NoMatch from "./views/NoMatch";
 import {EditStatement} from "./views/StatementDetails";
