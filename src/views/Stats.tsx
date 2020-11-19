@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Layout from "../components/Layout";
 import {CategorySelection, Category} from "../components/CategorySelection";
 import styled from "styled-components";

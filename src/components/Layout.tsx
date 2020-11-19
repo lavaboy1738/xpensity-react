@@ -2,12 +2,14 @@ import React from "react";
 import Nav from "./Nav";
 import styled from "styled-components";
 
+
 const height = window.innerHeight;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  touch-action: manipulation;
 `
 
 const Main = styled.div`
@@ -19,6 +21,7 @@ const Main = styled.div`
 
 
 const Layout = (props: any) => {
+
     return (
         <Wrapper style={{height: `${height}px`}} >
           <Main>

@@ -53,6 +53,7 @@ overflow-y: auto;
             font-size: 1.8rem;
           }
           .comments{
+            line-height: 1.8rem;
             opacity: 0.5;
             flex-grow: 1;
             font-weight: 200;

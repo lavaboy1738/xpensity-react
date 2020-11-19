@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "./index.scss";
+import {Intro} from "./components/Intro";
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <Intro/>
   </React.StrictMode>,
   document.getElementById('root')
 );
