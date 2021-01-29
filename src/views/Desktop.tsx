@@ -83,7 +83,7 @@ const Desktop = () => {
                     </div>
                     <div className="content-left-lower">
                             <p>
-                                Xpensity is a personal accounting SPA built to keep track of income and expenditures.
+                                Xpensity is a personal accounting PWA built to keep track of income and expenditures.
                                 <br/>
                                 It's designed to be <strong>mobile-only</strong> for quick use.
                             </p>
